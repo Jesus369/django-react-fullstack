@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/jayzuss/.virtualenvs/lead_manager_react_django-pn07DyYX/bin/python"
+  "python.pythonPath": "/Users/jayzuss/.virtualenvs/lead_manager_react_django-pn07DyYX/bin/python",
+  "python.linting.pylintArgs": ["--load-plugins=pylint_django"]
 }
