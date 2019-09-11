@@ -12,6 +12,7 @@ class Alerts extends Component {
   componentDidUpdate(prevProps) {
     const { error, alert, message } = this.props;
 
+    // Handling Error Alerts
     if (error !== prevProps.error) {
       if (error.msg.name) {
         alert.error(`Name: ${error.msg.name.join()}`);
@@ -24,9 +25,13 @@ class Alerts extends Component {
       }
     }
 
+    // Handling Success Alerts
     if (message !== prevProps.message) {
       if (message.deleteLead) {
         alert.success(message.deleteLead);
+      }
+      if (message.addLead) {
+        alert.success(message.addLead);
       }
     }
   }

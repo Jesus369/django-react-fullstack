@@ -22,6 +22,7 @@ export const deleteLead = id => dispatch => {
   axios
     .delete(`api/leads/${id}/`)
     .then(res => {
+      // Success alert for a deleted lead
       dispatch(createMessage({ deleteLead: "Lead Deleted!" }));
       dispatch({
         type: DELETE_LEAD,
@@ -38,6 +39,8 @@ export const addLead = lead => dispatch => {
   axios
     .post("api/leads/", lead)
     .then(res => {
+      // Success alert for an added lead
+      dispatch(createMessage({ addLead: "Lead Added!" }));
       dispatch({
         type: ADD_LEAD,
         payload: res.data
@@ -48,6 +51,7 @@ export const addLead = lead => dispatch => {
         msg: err.response.data,
         status: err.response.status
       };
+      // Handling errors
       dispatch({
         type: GET_ERRORS,
         payload: errors
