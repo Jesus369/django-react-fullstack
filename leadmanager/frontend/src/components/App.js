@@ -1,14 +1,25 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 // Utilizing Alerts
 // Use an alias for react-alert Provider since provider currently exiss
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 
+import PrivateRoute from "./common/PrivateRoute";
+
 import Header from "./layout/Header";
 import Dashboard from "./leads/dashboard";
 import Alerts from "./layout/Alerts";
+
+import Login from "./accounts/Login";
+import Register from "./accounts/Register";
 
 // Utilizing Redux
 import { Provider } from "react-redux";
@@ -25,13 +36,21 @@ class App extends Component {
     return (
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <Fragment>
-            <Header />
-            <Alerts />
-            <div className="container">
-              <Dashboard />
-            </div>
-          </Fragment>
+          <Router>
+            <Fragment>
+              <Header />
+              <Alerts />
+              <div className="container">
+                {/* Switch Component is used to group Routes together */}
+                <Switch>
+                  {/* Route provides Routes based on url path */}
+                  <PrivateRoute exact path="/" component={Dashboard} />
+                  <Route exatch path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
         </AlertProvider>
       </Provider>
     );
