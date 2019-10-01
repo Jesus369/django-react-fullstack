@@ -108,7 +108,7 @@ export const tokenConfig = getState => {
   // Headers
   const config = {
     headers: {
-      "Content-Type": "spplication/json"
+      "Content-Type": "application/json"
     }
   };
 
